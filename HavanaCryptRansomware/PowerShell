@@ -1,0 +1,1 @@
+Get-WinEvent | where {(($_.message -match "Image.*.*cmd.exe.*") -and $_.message -match "CommandLine.*.*REG add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System /v DisableTaskMgr /t REG_DWORD /d 1 /fac.*") } | select TimeCreated,Id,RecordId,ProcessId,MachineName,Message

@@ -1,0 +1,12 @@
+[Detect HavanaCrypt Ransomware via CommandLine]
+alert.severity = 3
+description = This rule detects HavanaCrypt Ransomware. (Rule ID: SEC-20220829004)
+cron_schedule = 0 * * * *
+disabled = 1
+is_scheduled = 1
+is_visible = 1
+dispatch.earliest_time = -60m@m
+dispatch.latest_time = now
+search = source="WinEventLog:*" AND ((Image="*cmd.exe*") AND CommandLine="*REG add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System /v DisableTaskMgr /t REG_DWORD /d 1 /fac*")
+alert.suppress = 0
+alert.track = 1

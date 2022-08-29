@@ -1,0 +1,1 @@
+SELECT * FROM TABLE_NAME WHERE ((Image ilike '%cmd.exe%') AND CommandLine ilike '%REG add HKCU\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System /v DisableTaskMgr /t REG_DWORD /d 1 /fac%');

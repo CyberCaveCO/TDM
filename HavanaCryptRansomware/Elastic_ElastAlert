@@ -1,0 +1,14 @@
+alert:
+- debug
+description: This rule detects HavanaCrypt Ransomware. (Rule SEC-20220829004).
+filter:
+- query_string:
+    query: (process.executable.text:*cmd.exe* AND process.command_line.text:*REG\
+      add\ HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\ \/v\
+      DisableTaskMgr\ \/t\ REG_DWORD\ \/d\ 1\ \/fac*)
+index: winlogbeat-*
+name: detect_havanacrypt_ransomware_via_commandline
+priority: 2
+realert:
+  minutes: 0
+type: any

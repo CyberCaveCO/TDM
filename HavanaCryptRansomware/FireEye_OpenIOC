@@ -1,0 +1,26 @@
+<!--?xml version="1.0" encoding="utf-8"?-->
+<openioc xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://openioc.org/schemas/OpenIOC_1.1" id="21636369-8b52-9b4a-97b7-50923ceb3ffd" last-modified="2022-08-29T18:38:39:00Z" published-date="2022-08-29T18:38:39:00Z">
+	<metadata>
+		<short_description>Detect HavanaCrypt Ransomware via CommandLine</short_description>
+		<description>This rule detects HavanaCrypt Ransomware. </description>
+		<authored_by>CyberCave</authored_by>
+		<authored_date>2022-08-29T18:38:39:00Z</authored_date>
+        <links></links>
+        <reference>https://cybercave.com.sa/</reference>
+	</metadata>
+	<criteria>
+		<indicator operator="OR" id="b8a1abcd-1a69-16c7-4da4-f9fc3c6da5d7">
+			<indicator operator="AND" id="d95bafc8-f2a4-d27b-dcf4-bb99f4bea973">
+				<indicatoritem id="e3e70682-c209-4cac-629f-6fbed82c07cd" condition="contains" preserve-case="false" negate="false">
+					<context document="processEvent" search="processEvent/processPath" type="event">
+					<content type="string">cmd.exe</content>
+				</context></indicatoritem>
+				<indicatoritem id="cd613e30-d8f1-6adf-91b7-584a2265b1f5" condition="contains" preserve-case="false" negate="false">
+					<context document="processEvent" search="processEvent/processCmdLine" type="event">
+					<content type="string">REG add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System /v DisableTaskMgr /t REG_DWORD /d 1 /fac</content>
+				</context></indicatoritem>
+			</indicator>
+		</indicator>
+	</criteria>
+  <parameters>
+</parameters></openioc>

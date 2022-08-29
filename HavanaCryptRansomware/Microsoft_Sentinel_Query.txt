@@ -1,0 +1,1 @@
+SecurityEvent |  where EventID == 4688 | where ((NewProcessName contains 'cmd.exe') and CommandLine contains @'REG add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System /v DisableTaskMgr /t REG_DWORD /d 1 /fac')

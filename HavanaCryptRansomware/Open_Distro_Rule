@@ -1,0 +1,62 @@
+{
+    "type": "monitor",
+    "name": "Detect HavanaCrypt Ransomware via CommandLine",
+    "enabled": true,
+    "schedule": {
+        "period": {
+            "interval": 1,
+            "unit": "MINUTES"
+        }
+    },
+    "inputs": [
+        {
+            "search": {
+                "indices": [
+                    "winlogbeat-*"
+                ],
+                "query": {
+                    "size": 1000,
+                    "query": {
+                        "bool": {
+                            "must": [
+                                {
+                                    "query_string": {
+                                        "query": "(process.executable.text:*cmd.exe* AND process.command_line.text:*REG\\ add\\ HKCU\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\\ \\/v\\ DisableTaskMgr\\ \\/t\\ REG_DWORD\\ \\/d\\ 1\\ \\/fac*)",
+                                        "analyze_wildcard": true
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "triggers": [
+        {
+            "name": "Trigger: Detect HavanaCrypt Ransomware via CommandLine",
+            "severity": "4",
+            "condition": {
+                "script": {
+                    "source": "ctx.results[0].hits.total.value &gt; 0",
+                    "lang": "painless"
+                }
+            },
+            "actions": [
+                {
+                    "name": "some alert",
+                    "destination_id": "DESTINATION_ID",
+                    "message_template": {
+                        "source": "{'event.severity': '4',\n'message': 'Alert',\n'process.executable.text': '{ctx.results.0.hits.hits.0._source.process.executable.text}',\n'process.command_line.text': '{ctx.results.0.hits.hits.0._source.process.command_line.text}'}",
+                        "lang": "mustache"
+                    },
+                    "throttle_enabled": false,
+                    "subject_template": {
+                        "source": "",
+                        "lang": "mustache"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,1 @@
+SELECT UTF8(payload) from events where LOGSOURCETYPENAME(devicetype)='Microsoft Windows Security Event Log' and ("Image" ilike '%cmd.exe%') and "Process CommandLine" ilike '%REG add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System /v DisableTaskMgr /t REG_DWORD /d 1 /fac%'

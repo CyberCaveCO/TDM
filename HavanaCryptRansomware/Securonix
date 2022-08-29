@@ -1,0 +1,1 @@
+index = activity AND (rg_functionality = "Microsoft Windows" AND ((@destinationprocessname CONTAINS "cmd.exe") OR (@customstring54 CONTAINS "cmd.exe")) AND @resourcecustomfield3 CONTAINS "REG add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System /v DisableTaskMgr /t REG_DWORD /d 1 /fac")

@@ -1,0 +1,10 @@
+{
+    "name": "Detect HavanaCrypt Ransomware via CommandLine by CyberCave",
+    "description": "This rule detects HavanaCrypt Ransomware. Technique: . Author: CyberCave. Rule ID: SEC-20220829004 License: https://github.com/Neo23x0/sigma/blob/master/LICENSE.Detection.Rules.md. Reference: https://cybercave.com.sa/.",
+    "enabled": true,
+    "expression": "(metadata_vendor=\"Microsoft\" and metadata_product=\"Windows\" and baseImage=\"*cmd.exe*\" and commandLine=\"*REG add HKCU\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System /v DisableTaskMgr /t REG_DWORD /d 1 /fac*\")",
+    "assetField": "device_hostname",
+    "score": 4,
+    "stream": "record",
+    "category": "Unknown/Other"
+}

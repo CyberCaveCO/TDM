@@ -1,0 +1,20 @@
+title: Detect HavanaCrypt Ransomware via CommandLine
+status: experimental
+id: SEC-20220829004
+description: This rule detects HavanaCrypt Ransomware. 
+references:
+    - https://www.trendmicro.com/en_us/research/22/g/brand-new-havanacrypt-ransomware-poses-as-google-software-update.html
+author: CyberCave
+logsource:
+    product: windows
+    category: process_creation
+detection:
+    selection:
+        Image|contains: 
+            - 'cmd.exe'
+        CommandLine|contains: 'REG add HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_DWORD /d 1 /fac'
+    condition: selection
+falsepositives:
+    - unknown
+level: high
+

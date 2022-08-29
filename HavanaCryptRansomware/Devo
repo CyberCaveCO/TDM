@@ -1,0 +1,1 @@
+from box.all.win where ((toktains(serviceFileName, "cmd.exe", true, true)) and toktains(procCmdLine, "REG add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System /v DisableTaskMgr /t REG_DWORD /d 1 /fac", true, true)) select *

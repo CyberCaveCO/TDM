@@ -1,0 +1,15 @@
+{
+    "displayName": "Detect HavanaCrypt Ransomware via CommandLine by CyberCave",
+    "description": "This rule detects HavanaCrypt Ransomware. Author: CyberCave. Rule ID: SEC-20220829004. License: https://github.com/Neo23x0/sigma/blob/master/LICENSE.Detection.Rules.md. Reference: https://cybercave.com.sa/.",
+    "severity": "high",
+    "enabled": true,
+    "query": "SecurityEvent |  where EventID == 4688 | where ((NewProcessName contains 'cmd.exe') and CommandLine contains @'REG add HKCU\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System /v DisableTaskMgr /t REG_DWORD /d 1 /fac') | extend AccountCustomEntity = TargetUserName | extend HostCustomEntity = Computer | extend IPCustomEntity = IpAddress",
+    "queryFrequency": "PT30M",
+    "queryPeriod": "PT30M",
+    "triggerOperator": "GreaterThan",
+    "triggerThreshold": 0,
+    "suppressionDuration": "PT2H30M",
+    "suppressionEnabled": true,
+    "tactics": [],
+    "techniques": []
+}

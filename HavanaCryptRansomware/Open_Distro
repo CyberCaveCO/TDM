@@ -1,0 +1,1 @@
+(process.executable.text:*cmd.exe* AND process.command_line.text:*REG\ add\ HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\ \/v\ DisableTaskMgr\ \/t\ REG_DWORD\ \/d\ 1\ \/fac*)

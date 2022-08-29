@@ -1,0 +1,14 @@
+op: and
+rules:
+- op: is windows
+- op: and
+  rules:
+  - case sensitive: false
+    op: contains
+    path: event/FILE_PATH
+    value: cmd.exe
+  - case sensitive: false
+    op: contains
+    path: event/COMMAND_LINE
+    value: REG add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System
+      /v DisableTaskMgr /t REG_DWORD /d 1 /fac

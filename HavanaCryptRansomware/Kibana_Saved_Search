@@ -1,0 +1,18 @@
+{
+  "_id": "SEC-20220829004-Detect-HavanaCrypt-Ransomware-via-CommandLine",
+  "_type": "search",
+  "_source": {
+    "title": "Sigma: Detect HavanaCrypt Ransomware via CommandLine",
+    "description": "This rule detects HavanaCrypt Ransomware. Author: CyberCave. Rule ID: SEC-20220829004 License: https://github.com/Neo23x0/sigma/blob/master/LICENSE.Detection.Rules.md. Reference: https://cybercave.com.sa/.",
+    "hits": 0,
+    "columns": [],
+    "sort": [
+      "@timestamp",
+      "desc"
+    ],
+    "version": 1,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"index\": \"winlogbeat-*\", \"filter\": [], \"highlight\": {\"pre_tags\": [\"@kibana-highlighted-field@\"], \"post_tags\": [\"@/kibana-highlighted-field@\"], \"fields\": {\"*\": {}}, \"require_field_match\": false, \"fragment_size\": 2147483647}, \"query\": {\"query_string\": {\"query\": \"(process.executable.text:*cmd.exe* AND process.command_line.text:*REG\\\\ add\\\\ HKCU\\\\\\\\Software\\\\\\\\Microsoft\\\\\\\\Windows\\\\\\\\CurrentVersion\\\\\\\\Policies\\\\\\\\System\\\\ \\\\/v\\\\ DisableTaskMgr\\\\ \\\\/t\\\\ REG_DWORD\\\\ \\\\/d\\\\ 1\\\\ \\\\/fac*)\", \"analyze_wildcard\": true}}}"
+    }
+  }
+}
