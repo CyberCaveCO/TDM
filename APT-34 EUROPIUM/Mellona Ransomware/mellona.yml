@@ -1,0 +1,33 @@
+title: Detect GoXml Ransomware
+id: 2392239
+description: Iranian Threat actors use a custom tool built on SMB protocol 
+called "Mellona.exe" to spread destructive ransomware.
+status: experimental
+references:
+    - 
+https://www.microsoft.com/security/blog/2022/09/08/microsoft-investigates-iranian-attacks-against-the-albanian-government/
+tags:
+    - attack.execution
+    - attack.t1059.001
+author: CyberCave
+date: 2022/09/09
+modified: 2022/09/09
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection1:
+        CommandLine|contains|all: 
+            - '-l'
+            - '-d'
+            - '-u'
+            - '-p'
+            - '-f'
+            - '-w'
+            - 'C:\ProgramData\Microsoft\Windows\Start 
+Menu\Programs\StartUp'
+            - '-o'
+    condition: selection1
+falsepositives:
+    - Unknown
+level: high
