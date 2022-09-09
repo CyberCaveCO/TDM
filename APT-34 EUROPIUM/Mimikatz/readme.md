@@ -1,0 +1,1 @@
+This Is open source Rule:https://raw.githubusercontent.com/SigmaHQ/sigma/58f1d6fa2c679198f2932e3c361d5fa827effa95/rules/windows/process_creation/proc_creation_win_mimikatz_command_line.yml
