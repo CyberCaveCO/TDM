@@ -1,0 +1,21 @@
+title: Detect Raccoon Malware Stealer (webserver)
+id: SEC-20221004003
+status: experimental
+description:  Detect Raccoon Malware Stealer useing Custom user-agent 
+author: CyberCave
+date: 2022/10/04
+modified: 2022/10/04
+tags:
+    - attack.Exfiltration
+references:
+    - https://www.joesandbox.com/analysis/709639/0/html
+logsource:
+    category: webserver
+detection:
+    selection:
+        c-useragent|contains:
+            - 'TakeMyPainBack'
+    condition: selection
+falsepositives:
+    - Unknown
+level: critical
